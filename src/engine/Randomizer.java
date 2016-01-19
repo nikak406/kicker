@@ -1,11 +1,11 @@
 package engine;
 
+import model.Championship;
 import model.Player;
 import model.Schedule;
 import model.Team;
 
 import java.util.Collection;
-import java.util.Random;
 import java.util.Set;
 
 public class Randomizer {
@@ -14,7 +14,7 @@ public class Randomizer {
     private Schedule schedule = new Schedule();
 
     public Randomizer() {
-        this.players = Player.getPlayers();
+        this.players = Championship.getInstance().getPlayers();
     }
 
     public Schedule randomize() {
@@ -25,7 +25,7 @@ public class Randomizer {
     }
 
     private boolean scheduleIsFull(){
-        Set<Player> players = Player.getPlayers();
+        Set<Player> players = Championship.getInstance().getPlayers();
         for (Player player : players) {
             if (!playerIsFull(player)){
                 return false;
@@ -36,7 +36,7 @@ public class Randomizer {
 
     private boolean playerIsFull(Player player) {
         Set<Team> playerTeams = schedule.getTeams(player);
-        Set<Player> players = Player.getPlayers();
+        Set<Player> players = Championship.getInstance().getPlayers();
         players.remove(player);
         for (Team team : playerTeams) {
             Player anotherPlayer = team.getAnotherPlayer(player);

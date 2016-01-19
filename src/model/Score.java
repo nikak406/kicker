@@ -19,7 +19,7 @@ public class Score {
         score2 = scanner.nextInt();
     }
 
-    boolean firstTeamWin() {
+    boolean isWin() {
         return (score1 - score2 > 0);
     }
 

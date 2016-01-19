@@ -1,42 +1,31 @@
 package model;
 
-public class Team {
+import java.util.ArrayList;
 
-    public Player getAttacker() {
-        return attacker;
-    }
-
-    public Player getDefender() {
-        return defender;
-    }
-
-    private Player attacker;
-    private Player defender;
+public class Team extends ArrayList<Player>{
 
     public Team(Player attacker, Player defender) {
+        super(2);
         assert (attacker != defender);
-        this.attacker = attacker;
-        this.defender = defender;
+        this.add(attacker);
+        this.add(defender);
     }
 
     @Override
     public String toString() {
-        return "" + attacker + " " + defender;
-    }
-
-    public boolean contains(Player player) {
-        return (attacker == player || defender == player);
+        return "" + this.get(0) + " " + this.get(1);
     }
 
     public Player getAnotherPlayer(Player player) {
-        if (defender == player) {
-            return attacker;
-        }else {
-            if (attacker == player) {
-                return defender;
-            }else {
-                return null;
-            }
+        int index = this.indexOf(player);
+        if (index == -1){
+            return null;
         }
+        return (this.get((index + 1) % 2));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);//TODO fix this
     }
 }

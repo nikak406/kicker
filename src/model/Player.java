@@ -1,12 +1,10 @@
 package model;
 
-import java.util.Set;
-import java.util.TreeSet;
-
 public class Player {
+
     public Player(String name) {
         this.name = name;
-        players.add(this);
+        Championship.getInstance().addPlayer(this);
     }
 
     public String getName() {
@@ -14,12 +12,6 @@ public class Player {
     }
 
     private String name;
-
-    public static Set<Player> getPlayers() {
-        return new TreeSet<>(players);
-    }
-
-    private static Set<Player> players = new TreeSet<>();
 
     @Override
     public String toString() {

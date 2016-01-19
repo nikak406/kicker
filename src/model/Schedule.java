@@ -6,9 +6,6 @@ import java.util.stream.Collectors;
 
 public class Schedule extends TreeSet<Match> {
 
-    static Schedule forecast = new Schedule();
-    static Schedule history = new Schedule();
-    
     public String writeSchedule(){
         return "";
         //TODO

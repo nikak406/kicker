@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -30,8 +32,6 @@ public class Match {
 
     public void setScore(Score score) {
         this.score = score;
-        Schedule.forecast.remove(this);
-        Schedule.history.add(this);
     }
 
     private Score score;
@@ -41,18 +41,13 @@ public class Match {
         this.team1 = team1;
         this.team2 = team2;
         number = count++;
-        Schedule.forecast.add(this);
+        Championship.getInstance().addMatch(this);
     }
 
     private void checkPlayers(Team team1, Team team2) {
-        Player a1 = team1.getAttacker();
-        Player d1 = team1.getDefender();
-        Player a2 = team2.getAttacker();
-        Player d2 = team2.getDefender();
-        assert (a1 != a2);
-        assert (a1 != d2);
-        assert (d1 != a2);
-        assert (d1 != d2);
+        List<Player> copy = new ArrayList<>(team1);
+        copy.retainAll(team2);
+        assert (copy.isEmpty());
     }
 
     @Override

@@ -77,13 +77,6 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="Palette2">
     <group name="Swing">
       <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
@@ -223,9 +216,6 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
-  <component name="SvnConfiguration">
-    <configuration>C:\Users\eugene.savochkin\AppData\Roaming\Subversion</configuration>
-  </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
@@ -234,6 +224,7 @@
       <properties version="1.0" />
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/lib/javax.json.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/javax-inject.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />

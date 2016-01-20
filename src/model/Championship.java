@@ -1,7 +1,6 @@
 package model;
 
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Championship {
@@ -17,14 +16,15 @@ public class Championship {
         return championship;
     }
 
-
-
-
     public Set<Player> getPlayers() {
-        return new TreeSet<>(players);
+        return new HashSet<>(players);
     }
 
-    private Set<Player> players = new TreeSet<>();
+    public void setPlayers(Set<Player> players) {
+        this.players = players;
+    }
+
+    private Set<Player> players = new HashSet<>();
 
     public void addPlayer(Player player) {
         players.add(player);
@@ -32,6 +32,9 @@ public class Championship {
 
 
 
+    public void setMatches(Schedule matches) {
+        this.matches = matches;
+    }
 
     private Schedule matches = new Schedule();
 
@@ -45,5 +48,13 @@ public class Championship {
 
     public void addMatch(Match match) {
         matches.add(match);
+    }
+
+    public SortedSet<PlayerRating> getRatings(){
+        SortedSet<PlayerRating> ratings = new TreeSet<>((p1, p2) -> p1.getScore() - p2.getScore());
+        for (Player player : players) {
+            ratings.add(new PlayerRating(player, getHistory().playing(player)));
+        }
+        return ratings;
     }
 }

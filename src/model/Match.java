@@ -1,9 +1,7 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
+import java.util.HashSet;
 
 public class Match {
 
@@ -37,28 +35,27 @@ public class Match {
     private Score score;
 
     public Match(Team team1, Team team2) {
-        checkPlayers(team1, team2);
+        assert team1.canPlay(team2);
         this.team1 = team1;
         this.team2 = team2;
         number = count++;
-        Championship.getInstance().addMatch(this);
-    }
-
-    private void checkPlayers(Team team1, Team team2) {
-        List<Player> copy = new ArrayList<>(team1);
-        copy.retainAll(team2);
-        assert (copy.isEmpty());
     }
 
     @Override
     public String toString() {
-        return "" + team1 + score + team2;
+        return "" + team1 + " | " + score  + " | " + team2;
     }
 
     public Set<Team> getTeams() {
-        Set<Team> set = new TreeSet<>();
+        Set<Team> set = new HashSet<>();
         set.add(team1);
         set.add(team2);
         return set;
+    }
+
+    public boolean playerWined(Player player){
+        int diff = score.score1 - score.score2;
+        return (diff > 0 && team1.contains(player)) ||
+                (diff < 0) && team2.contains(player);
     }
 }

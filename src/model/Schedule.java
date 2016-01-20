@@ -1,10 +1,10 @@
 package model;
 
 import java.util.Set;
-import java.util.TreeSet;
+import java.util.HashSet;
 import java.util.stream.Collectors;
 
-public class Schedule extends TreeSet<Match> {
+public class Schedule extends HashSet<Match> {
 
     public String writeSchedule(){
         return "";
@@ -17,7 +17,7 @@ public class Schedule extends TreeSet<Match> {
     }
     
     public Set<Team> getTeams() {
-        Set<Team> teams = new TreeSet<>();
+        Set<Team> teams = new HashSet<>();
         for (Match match : this) {
             teams.addAll(match.getTeams());
         }
@@ -26,6 +26,21 @@ public class Schedule extends TreeSet<Match> {
 
     public Set<Team> getTeams(Player player) {
         Set<Team> allTeams = getTeams();
-        return allTeams.stream().filter(team -> team.contains(player)).collect(Collectors.toCollection(TreeSet::new));
+        return allTeams.stream().filter(team -> team.contains(player)).collect(Collectors.toCollection(HashSet::new));
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder("Schedule:\n");
+        for (Match match : this) {
+            builder.append(match).append("\n");
+        }
+        return builder.toString();
+    }
+
+    public Schedule playing(Player player) {
+        return this.stream()
+                .filter(match -> (match.getTeam1().contains(player) || match.getTeam2().contains(player)))
+                .collect(Collectors.toCollection(Schedule::new));
     }
 }

@@ -1,40 +1,68 @@
 package engine;
 
-import model.Championship;
-import model.Player;
-import model.Schedule;
-import model.Team;
+import model.*;
 
-import java.util.Collection;
-import java.util.Set;
+import java.util.*;
 
 public class Randomizer {
 
-    private final Set<Player> players;
-    private Schedule schedule = new Schedule();
-
-    public Randomizer() {
-        this.players = Championship.getInstance().getPlayers();
-    }
-
     public Schedule randomize() {
-        Set<Team> apt = allPossibleTeams();
-        //TODO
-        return null;
-
+        int n = Championship.getInstance().getPlayers().size();
+        Schedule schedule;
+        int count = 0;
+        Schedule min = createSchedule(allPossibleTeams());
+        while (min.size() > n-1 && count < 10000) {
+            count++;
+            schedule = createSchedule(allPossibleTeams());
+            if (min.size() > schedule.size() && isFull(schedule)) {
+                min = schedule;
+            }
+        }
+        return min;
     }
 
-    private boolean scheduleIsFull(){
+    private Schedule createSchedule(Set<Team> teams) {
+        Schedule schedule = new Schedule();
+        if (teams.isEmpty()) {
+            return schedule;
+        }
+        Team team1 = random(teams);
+        teams.remove(team1);
+        Match match;
+        Team team2 = getPartner(team1, teams);
+        if (team2 != null){
+            teams.remove(team2);
+        } else {
+            team2 = getPartner(team1, allPossibleTeams());
+        }
+        match = new Match(team1, team2);
+        schedule.add(match);
+        schedule.addAll(createSchedule(teams));
+        return schedule;
+    }
+
+    private Team getPartner(Team team, Set<Team> teamsSet) {
+        List<Team> teams = new ArrayList<>(teamsSet);
+        Collections.shuffle(team);
+        for (Team cteam : teams) {
+            if (cteam.canPlay(team)) {
+                return cteam;
+            }
+        }
+        return null;
+    }
+
+    private boolean isFull(Schedule schedule){
         Set<Player> players = Championship.getInstance().getPlayers();
         for (Player player : players) {
-            if (!playerIsFull(player)){
+            if (!playerIsFull(player, schedule)){
                 return false;
             }
         }
         return true;
     }
 
-    private boolean playerIsFull(Player player) {
+    private boolean playerIsFull(Player player, Schedule schedule) {
         Set<Team> playerTeams = schedule.getTeams(player);
         Set<Player> players = Championship.getInstance().getPlayers();
         players.remove(player);
@@ -47,9 +75,18 @@ public class Randomizer {
         return players.isEmpty();
     }
 
-    private Set<Team> allPossibleTeams(){
-        return null;
-        //TODO
+    private Set<Team> allPossibleTeams() {
+        Set<Team> apt = new HashSet<>();
+        Set<Player> players = Championship.getInstance().getPlayers();
+        for (Player attacker : players) {
+            for (Player defender : players) {
+                if (attacker != defender) {
+                    Team team = new Team(attacker, defender);
+                    apt.add(team);
+                }
+            }
+        }
+        return apt;
     }
 
     public static <T> T random(Collection<T> coll) {

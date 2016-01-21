@@ -63,10 +63,6 @@ th, td
     border-bottom: 1px solid #ddd;
 }
 
-input[type="text"], input[type="password"], select {
-    width:100%
-}
-
 a:link { color: royalblue; }
 a:visited { color: purple; }
 a:focus { color: #556B2F; }
@@ -166,7 +162,7 @@ Single styles
 {
     font-size: .8125em;
     color: #fff !important;
-    background-color: #777370;
+    background-color: #556B2F;
     display: inline-block;
     padding: .5em 1em;
     margin-bottom: 0;

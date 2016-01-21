@@ -43,7 +43,8 @@ public class Match {
 
     @Override
     public String toString() {
-        return "" + team1 + " | " + score  + " | " + team2;
+        String scoreText = (score == null) ? "" : score.toString();
+        return "" + team1 + " | " + scoreText + " | " + team2;
     }
 
     public Set<Team> getTeams() {

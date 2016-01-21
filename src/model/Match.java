@@ -1,18 +1,18 @@
 package model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.Set;
 import java.util.HashSet;
 
+@XmlRootElement
 public class Match {
 
-    private static int count = 0;
+    public Match() {
+    }
 
     public Team getTeam1() {
         return team1;
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     public Score getScore() {
@@ -23,10 +23,16 @@ public class Match {
         return team2;
     }
 
+    public void setTeam1(Team team1) {
+        this.team1 = team1;
+    }
+
+    public void setTeam2(Team team2) {
+        this.team2 = team2;
+    }
+
     private Team team1;
     private Team team2;
-
-    private int number;
 
     public void setScore(Score score) {
         this.score = score;
@@ -38,14 +44,15 @@ public class Match {
         assert team1.canPlay(team2);
         this.team1 = team1;
         this.team2 = team2;
-        number = count++;
     }
 
     @Override
+
     public String toString() {
         String scoreText = (score == null) ? "" : score.toString();
         return "" + team1 + " | " + scoreText + " | " + team2;
     }
+
 
     public Set<Team> getTeams() {
         Set<Team> set = new HashSet<>();
@@ -53,6 +60,7 @@ public class Match {
         set.add(team2);
         return set;
     }
+
 
     public boolean playerWined(Player player){
         int diff = score.score1 - score.score2;

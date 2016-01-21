@@ -1,10 +1,31 @@
 package model;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Scanner;
 
+@XmlRootElement
 public class Score {
+    public int getScore1() {
+        return score1;
+    }
+
+    public int getScore2() {
+        return score2;
+    }
+
+    public void setScore1(int score1) {
+        this.score1 = score1;
+    }
+
+    public void setScore2(int score2) {
+        this.score2 = score2;
+    }
+
     int score1;
     int score2;
+
+    public Score() {
+    }
 
     public Score(int a, int b) {
         assert (a > 0);
@@ -15,7 +36,13 @@ public class Score {
 
     public Score(String score) {
         Scanner scanner = new Scanner(score);
+        while ((!scanner.hasNextInt())  && scanner.hasNext()){
+            scanner.next();
+        }
         score1 = scanner.nextInt();
+        while ((!scanner.hasNextInt()) && scanner.hasNext()){
+            scanner.next();
+        }
         score2 = scanner.nextInt();
     }
 

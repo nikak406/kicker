@@ -1,10 +1,15 @@
 package model;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
+@XmlRootElement
 public class Schedule extends HashSet<Match> {
+
+    public Schedule() {
+    }
 
     public String writeSchedule(){
         return "";

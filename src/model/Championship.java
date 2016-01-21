@@ -2,14 +2,26 @@ package model;
 
 import engine.Randomizer;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@XmlRootElement
 public class Championship {
 
-    private Championship() {}
+    public Championship() {}
+
+    public static void setInstance(Championship championship) {
+        Championship.championship = championship;
+        if (championship.getForecast().isEmpty() &&
+                championship.getHistory().isEmpty()){
+                    championship.setMatches(new Randomizer().randomize());
+        }
+    }
 
     private static Championship championship;
+
 
     public static synchronized Championship getInstance(){
         if (championship == null){
@@ -23,6 +35,40 @@ public class Championship {
         return championship;
     }
 
+
+    public Match findMatch(String string) {
+        String[] array = string.split("\\|");
+        Team team1, team2;
+        team1 = findTeam(array[0]);
+        team2 = findTeam(array[2]);
+        for (Match match : Championship.getInstance().getForecast()){
+            if (match.getTeam1().equals(team1) && match.getTeam2().equals(team2)){
+                return match;
+            }
+        }
+        return null;
+    }
+
+
+    public Player findPlayer(String name){
+        for (Player player : players) {
+            if (player.getName().equals(name)){
+                return player;
+            }
+        }
+        return null;
+    }
+
+
+    public Team findTeam(String string){
+        String[] array = string.trim().split(" ");
+        String name1 = array[0];
+        String name2 = array[1];
+        Player player1 = findPlayer(name1);
+        Player player2 = findPlayer(name2);
+        return new Team(player1, player2);
+    }
+
     public Set<Player> getPlayers() {
         return new HashSet<>(players);
     }
@@ -33,12 +79,13 @@ public class Championship {
 
     private Set<Player> players = new HashSet<>();
 
+
     public void addPlayer(Player player) {
         players.add(player);
     }
 
 
-
+    @XmlTransient
     public void setMatches(Schedule matches) {
         this.matches = matches;
     }
@@ -53,15 +100,26 @@ public class Championship {
         return matches.stream().filter(match -> match.getScore() != null).collect(Collectors.toCollection(Schedule::new));
     }
 
+    public void setForecast(Schedule matches) {
+        this.matches.addAll(matches);
+    }
+
+    public void setHistory(Schedule matches) {
+        this.matches.addAll(matches);
+    }
+
+
     public void addMatch(Match match) {
         matches.add(match);
     }
 
-    public SortedSet<PlayerRating> getRatings(){
-        SortedSet<PlayerRating> ratings = new TreeSet<>((p1, p2) -> p1.getScore() - p2.getScore());
+    @XmlTransient
+    public List<PlayerRating> getRatings(){
+        List<PlayerRating> ratings = new ArrayList<>();
         for (Player player : players) {
             ratings.add(new PlayerRating(player, getHistory().playing(player)));
         }
+        ratings.sort(((p1, p2) -> p2.getScore() - p1.getScore()));
         return ratings;
     }
 }

@@ -1,6 +1,12 @@
 package model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Player {
+
+    public Player() {
+    }
 
     public Player(String name) {
         this.name = name;
@@ -8,6 +14,10 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     private String name;
@@ -18,6 +28,7 @@ public class Player {
     }
 
     @Override
+
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -29,6 +40,7 @@ public class Player {
     }
 
     @Override
+
     public int hashCode() {
         return name != null ? name.hashCode() : 0;
     }

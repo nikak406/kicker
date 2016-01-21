@@ -1,9 +1,15 @@
 package model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.List;
 
+@XmlRootElement
 public class Team extends ArrayList<Player>{
+
+    public Team() {
+    }
 
     public Team(Player attacker, Player defender) {
         super(2);

@@ -3,7 +3,7 @@ package ui;
 import model.*;
 
 import javax.inject.Named;
-import java.util.SortedSet;
+import java.util.List;
 
 @Named
 public class Jsf {
@@ -18,12 +18,16 @@ public class Jsf {
         return Championship.getInstance().getHistory();
     }
 
-    public SortedSet<PlayerRating> getRatings(){
+    public List<PlayerRating> getRatings() {
         return Championship.getInstance().getRatings();
     }
 
-    public Match getMatch() {
-        return match;
+    public String getMatch() {
+        if (match != null){
+            return match.toString();
+        } else {
+            return "";
+        }
     }
 
     public String getScore() {
@@ -32,8 +36,8 @@ public class Jsf {
 
     private Match match;
 
-    public void setMatch(Match match) {
-        this.match = match;
+    public void setMatch(String match) {
+        this.match = Championship.getInstance().findMatch(match);
     }
 
     public void setScore(String score) {
@@ -41,6 +45,8 @@ public class Jsf {
     }
 
     public void sendScore(){
-        match.setScore(new Score(score));
+        if (match != null){
+            match.setScore(new Score(score));
+        }
     }
 }

@@ -10,6 +10,7 @@
           </element>
           <element id="directory" name="lib">
             <element id="library" level="project" name="lib" />
+            <element id="library" level="project" name="javax.ws.rs:javax.ws.rs-api:2.0-m16" />
           </element>
         </element>
         <element id="javaee-facet-resources" facet="kicker/web/Web" />
@@ -224,6 +225,15 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
   <component name="libraryTable">
+    <library name="javax.ws.rs:javax.ws.rs-api:2.0-m16" type="repository">
+      <properties maven-id="javax.ws.rs:javax.ws.rs-api:2.0-m16" />
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/javax.ws.rs-api-2.0-m16.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/javax.annotation-api-1.2-b01.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
     <library name="lib">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/lib/cdi-api.jar!/" />

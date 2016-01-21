@@ -18,7 +18,7 @@ h1,h2,h3,h4,h5,h6
     line-height: 1.1;
 }
 
-h1 { font-size: 2.25em; } /* 36px */
+h1 { font-size: 6em;  } /* 36px */
 h2 { font-size: 1.75em; } /* 28px */
 h3 { font-size: 1.375em; } /* 22px */
 h4 { font-size: 1.125em; } /* 18px */
@@ -82,8 +82,8 @@ Layout styles
 
 .header
 {
-    color: #fff;
-    background: #556B2F;
+    color: black;
+    background: white;
     padding: 1em 1.25em;
 }
 
@@ -91,7 +91,7 @@ Layout styles
 
 .nav-bar
 {
-    background:#556B2F;
+    background:#9e6547;
     padding: 0;
 }
 
@@ -99,15 +99,15 @@ Layout styles
 
 .footer
 {
-    color: #fff;
-    background: #556B2F;
+    color: white;
+    background: #9e6547;
     padding: 1em 1.25em;
 }
 
 .login
 {
-    color: #fff;
-    background: #556B2F;
+    color: black;
+    background: white;
     padding: 1em 1.25em;
 }
 
@@ -132,7 +132,8 @@ Nav
 {
     display: block;
     padding: .7em 1.25em;
-    color: #fff;
+    color: white;
+    font-weight: bold;
     text-decoration: none;
     border-bottom: 1px solid gray;
 }
@@ -143,13 +144,13 @@ Nav
 .nav a:focus
 {
     color: white;
-    background-color: #556B2F;
+    background-color: dimgray;
 }
 
 .nav a:active
 {
     color: white;
-    background-color: #556B2F;
+    background-color: dimgray;
 }
 
 /* -----------------------
@@ -162,7 +163,7 @@ Single styles
 {
     font-size: .8125em;
     color: #fff !important;
-    background-color: #556B2F;
+    background-color: grey;
     display: inline-block;
     padding: .5em 1em;
     margin-bottom: 0;
@@ -186,13 +187,13 @@ Single styles
 .btn:hover
 {
     color: #fff !important;
-    background-color: green;
+    background-color: red;
 }
 
 .btn:focus
 {
     color: #fff !important;
-    background-color: #556B2F;
+    background-color: red;
 }
 
 .btn:active

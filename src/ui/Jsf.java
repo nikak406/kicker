@@ -8,7 +8,7 @@ import javax.inject.Named;
 import java.util.SortedSet;
 
 @Named
-public class View {
+public class Jsf {
 
     public Schedule getForecast() {
         return Championship.getInstance().getForecast();
@@ -18,7 +18,7 @@ public class View {
         return Championship.getInstance().getHistory();
     }
 
-    public SortedSet<PlayerRating> getTable(){
+    public SortedSet<PlayerRating> getRatings(){
         return Championship.getInstance().getRatings();
     }
 }

@@ -15,11 +15,11 @@
     <h:dataTable value="#{cc.attrs.ratings}" var="rating" class="table table-striped">
         <h:column>
             <f:facet name="header">Имя</f:facet>
-            #{rating.player}
+            #{rating.name}
         </h:column>
         <h:column>
             <f:facet name="header">Сыграно</f:facet>
-            #{rating.gamePlayed}
+            #{rating.gamesPlayed}
         </h:column>
         <h:column>
             <f:facet name="header">Побед</f:facet>

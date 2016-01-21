@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ArtifactManager">
-    <artifact type="exploded-war" name="kicker:war exploded">
+    <artifact type="exploded-war" build-on-make="true" name="kicker:war exploded">
       <output-path>$PROJECT_DIR$/out/artifacts/kicker_war_exploded</output-path>
       <root id="root">
-        <element id="javaee-facet-resources" facet="kicker/web/Web" />
         <element id="directory" name="WEB-INF">
           <element id="directory" name="classes">
             <element id="module-output" name="kicker" />
           </element>
+          <element id="directory" name="lib">
+            <element id="library" level="project" name="javax.inject:javax.inject:1" />
+            <element id="library" level="project" name="lib" />
+          </element>
         </element>
+        <element id="javaee-facet-resources" facet="kicker/web/Web" />
+        <element id="javaee-facet-resources" facet="kicker/web/Web" />
       </root>
     </artifact>
   </component>
@@ -220,17 +225,15 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
   <component name="libraryTable">
-    <library name="javax.json.processing-1.0" type="JsonProcessing">
-      <properties version="1.0" />
+    <library name="javax.inject:javax.inject:1" type="repository">
+      <properties maven-id="javax.inject:javax.inject:1" />
       <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/javax.json.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/javax-inject.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/javax.inject-1.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES />
     </library>
-    <library name="Mojarra-2.2.1" type="jsf">
-      <properties version="2.2.1" />
+    <library name="lib">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/lib/jstl-1.1.0.jar!/" />
         <root url="jar://$PROJECT_DIR$/lib/javax.faces-2.2.1.jar!/" />

@@ -10,8 +10,8 @@ public class PlayerRating extends Player {
         return gamesPlayed;
     }
 
-    public int getLosees() {
-        return losees;
+    public int getLoses() {
+        return loses;
     }
 
     public int getLoseScore() {
@@ -32,7 +32,7 @@ public class PlayerRating extends Player {
 
     private int gamesPlayed;
     private int wins = 0;
-    private int losees = 0;
+    private int loses = 0;
     private int winScore = 0;
     private int loseScore = 0;
     private int difference = 0;
@@ -52,7 +52,7 @@ public class PlayerRating extends Player {
                 loseScore += Math.min(score1, score2);
                 this.score++;
             } else{
-                losees++;
+                loses++;
                 winScore += Math.min(score1, score2);
                 loseScore += Math.max(score1, score2);
             }

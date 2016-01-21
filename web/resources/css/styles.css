@@ -69,7 +69,7 @@ input[type="text"], input[type="password"], select {
 
 a:link { color: royalblue; }
 a:visited { color: purple; }
-a:focus { color: black; }
+a:focus { color: #556B2F; }
 a:hover { color: green; }
 a:active { color: red; }
 
@@ -87,7 +87,7 @@ Layout styles
 .header
 {
     color: #fff;
-    background: #555;
+    background: #556B2F;
     padding: 1em 1.25em;
 }
 
@@ -95,7 +95,7 @@ Layout styles
 
 .nav-bar
 {
-    background: #000;
+    background:#556B2F;
     padding: 0;
 }
 
@@ -104,14 +104,14 @@ Layout styles
 .footer
 {
     color: #fff;
-    background: #000;
+    background: #556B2F;
     padding: 1em 1.25em;
 }
 
 .login
 {
     color: #fff;
-    background: #000;
+    background: #556B2F;
     padding: 1em 1.25em;
 }
 
@@ -147,13 +147,13 @@ Nav
 .nav a:focus
 {
     color: white;
-    background-color: black;
+    background-color: #556B2F;
 }
 
 .nav a:active
 {
     color: white;
-    background-color: black;
+    background-color: #556B2F;
 }
 
 /* -----------------------
@@ -167,7 +167,6 @@ Single styles
     font-size: .8125em;
     color: #fff !important;
     background-color: #777370;
-    border-color: #222;
     display: inline-block;
     padding: .5em 1em;
     margin-bottom: 0;
@@ -197,7 +196,7 @@ Single styles
 .btn:focus
 {
     color: #fff !important;
-    background-color: black;
+    background-color: #556B2F;
 }
 
 .btn:active

@@ -1,5 +1,7 @@
 package model;
 
+import engine.Randomizer;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -12,6 +14,11 @@ public class Championship {
     public static synchronized Championship getInstance(){
         if (championship == null){
             championship = new Championship();
+            championship.players.add(new Player("Грыша_Борець"));
+            championship.players.add(new Player("Миша_Боксер"));
+            championship.players.add(new Player("Коля_Уркаган"));
+            championship.players.add(new Player("Сережа_Молодец"));
+            championship.setMatches(new Randomizer().randomize());
         }
         return championship;
     }

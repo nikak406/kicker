@@ -119,7 +119,7 @@ public class Championship {
         for (Player player : players) {
             ratings.add(new PlayerRating(player, getHistory().playing(player)));
         }
-        ratings.sort(((p1, p2) -> p2.getScore() - p1.getScore()));
+        ratings.sort(((p1, p2) -> p2.getCoef() - p1.getCoef()));
         return ratings;
     }
 }

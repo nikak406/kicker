@@ -18,7 +18,7 @@
             #{rating.name}
         </h:column>
         <h:column>
-            <f:facet name="header">Сыграно</f:facet>
+            <f:facet name="header">Игр</f:facet>
             #{rating.gamesPlayed}
         </h:column>
         <h:column>
@@ -26,20 +26,24 @@
             #{rating.wins}
         </h:column>
         <h:column>
-            <f:facet name="header">Поражений</f:facet>
+            <f:facet name="header">Пораж.</f:facet>
             #{rating.loses}
         </h:column>
         <h:column>
-            <f:facet name="header">Забито</f:facet>
+            <f:facet name="header">Голы</f:facet>
             #{rating.winScore}
         </h:column>
         <h:column>
-            <f:facet name="header">Пропущено</f:facet>
+            <f:facet name="header">Проп.</f:facet>
             #{rating.loseScore}
         </h:column>
         <h:column>
-            <f:facet name="header">Разница</f:facet>
+            <f:facet name="header">Разн.</f:facet>
             #{rating.difference}
+        </h:column>
+        <h:column>
+            <f:facet name="header">%</f:facet>
+            #{rating.coef}
         </h:column>
         <h:column>
             <f:facet name="header">Очки</f:facet>

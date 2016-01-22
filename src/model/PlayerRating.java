@@ -38,6 +38,16 @@ public class PlayerRating extends Player {
     private int difference = 0;
     private int score = 0;
 
+    public int getCoef() {
+        return coef;
+    }
+
+    public void setCoef(int coef) {
+        this.coef = coef;
+    }
+
+    private int coef = 0;
+
     public PlayerRating(Player player, Schedule schedule) {
         super(player.getName());
         this.gamesPlayed = schedule.size();
@@ -55,6 +65,11 @@ public class PlayerRating extends Player {
                 loses++;
                 winScore += Math.min(score1, score2);
                 loseScore += Math.max(score1, score2);
+            }
+            if (gamesPlayed!=0){
+                float x = ((float)wins) / (float)gamesPlayed;
+                x = x * 100;
+                coef = (int) x;
             }
             difference += winScore - loseScore;
         }

@@ -272,6 +272,10 @@ Wide styles
     .alignleft {
         float: left;
     }
+
+    .textleft {
+        text-align: left;
+    }
     .alignright {
         float: right;
     }

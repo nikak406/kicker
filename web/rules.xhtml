@@ -8,7 +8,19 @@
 <h:body>
     <ui:composition template="pattern.xhtml">
         <ui:define name="content">
-            <h:outputText value="Здесь должен был быть текст о помощи"/>
+            <h:outputText styleClass="textleft" value="Играть может любое количество игроков (но не менее четырех).
+            Генератор матчей создает матчи таким образом, чтобы каждый сыграл в паре с каждым хотя бы один раз.
+            Команда-соперник выбирается случайно." />
+            <br/>
+            <br/>
+            <h:outputText styleClass="textleft" value="Если количество игроков не кратно 4, то некоторые игроки могут
+            по окончании чемпионата сыграть большее число матчей, чем остальные
+            (иначе математика не сходится). Поэтому рейтинг игрока определяется не по очкам, а по проценту побед."/>
+            <br/>
+            <br/>
+            <h:outputText styleClass="textleft" value="Добавить результат матча можно "/>
+            <h:outputLink styleClass="textleft" value="result.xhtml">здесь</h:outputLink>
+            <br/>
         </ui:define>
     </ui:composition>
 </h:body>

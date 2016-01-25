@@ -28,14 +28,14 @@ public class Score {
     }
 
     public Score(int a, int b) {
-        assert (a > 0);
-        assert (b > 0);
+        assert (a >= 0);
+        assert (b >= 0);
         this.score1 = a;
         this.score2 = b;
     }
 
     public Score(String score) {
-        Scanner scanner = new Scanner(score);
+        Scanner scanner = new Scanner(transform(score));
         while ((!scanner.hasNextInt())  && scanner.hasNext()){
             scanner.next();
         }
@@ -44,6 +44,18 @@ public class Score {
             scanner.next();
         }
         score2 = scanner.nextInt();
+    }
+
+    private String transform(String score) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : score.toCharArray()) {
+            if (Character.isDigit(c)) {
+                sb.append(c);
+            } else {
+                sb.append(' ');
+            }
+        }
+        return sb.toString();
     }
 
     boolean isWin() {

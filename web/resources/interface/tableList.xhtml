@@ -18,6 +18,10 @@
             #{rating.name}
         </h:column>
         <h:column>
+            <f:facet name="header">Место</f:facet>
+            #{cc.attrs.ratings.indexOf(rating) + 1}
+        </h:column>
+        <h:column>
             <f:facet name="header">Игр</f:facet>
             #{rating.gamesPlayed}
         </h:column>

@@ -71,7 +71,7 @@ public class PlayerRating extends Player {
                 x = x * 100;
                 coef = (int) x;
             }
-            difference += winScore - loseScore;
         }
+        difference = (winScore - loseScore);
     }
 }

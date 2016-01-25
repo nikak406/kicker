@@ -10,16 +10,6 @@ public class Schedule extends HashSet<Match> {
 
     public Schedule() {
     }
-
-    public String writeSchedule(){
-        return "";
-        //TODO
-    }
-    
-    public String writeTable(){
-        return "";
-        //TODO
-    }
     
     public Set<Team> getTeams() {
         Set<Team> teams = new HashSet<>();

@@ -8,6 +8,7 @@
 <h:body>
     <ui:composition template="pattern.xhtml">
         <ui:define name="content">
+            <div align="justify">
             <h:outputText styleClass="textleft" value="Играть может любое количество игроков (но не менее четырех).
             Генератор матчей создает матчи таким образом, чтобы каждый сыграл в паре с каждым хотя бы один раз.
             Команда-соперник выбирается случайно." />
@@ -21,6 +22,7 @@
             <h:outputText styleClass="textleft" value="Добавить результат матча можно "/>
             <h:outputLink styleClass="textleft" value="result.xhtml">здесь</h:outputLink>
             <br/>
+            </div>
         </ui:define>
     </ui:composition>
 </h:body>

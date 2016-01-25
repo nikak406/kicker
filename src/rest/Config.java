@@ -1,5 +1,6 @@
 package rest;
 
+import engine.Randomizer;
 import model.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -44,6 +45,10 @@ public class Config {
         matches.addAll(getMatches(doc, "history"));
         matches.addAll(getMatches(doc, "forecast"));
         championship.setMatches(matches);
+
+        if (matches.isEmpty()){
+            championship.setMatches(new Randomizer().randomize());
+        }
 
         Championship.setInstance(championship);
     }

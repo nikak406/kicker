@@ -26,11 +26,8 @@ public class Championship {
     public static synchronized Championship getInstance(){
         if (championship == null){
             championship = new Championship();
-            championship.players.add(new Player("Грыша_Борець"));
-            championship.players.add(new Player("Миша_Боксер"));
-            championship.players.add(new Player("Коля_Уркаган"));
-            championship.players.add(new Player("Сережа_Молодец"));
-            championship.setMatches(new Randomizer().randomize());
+            championship.setPlayers(Collections.emptySet());
+            championship.setMatches(new Schedule());
         }
         return championship;
     }
@@ -119,14 +116,7 @@ public class Championship {
         for (Player player : players) {
             ratings.add(new PlayerRating(player, getHistory().playing(player)));
         }
-        ratings.sort(((p1, p2) -> {
-            if (p2.getCoef() != p1.getCoef()){
-                return p2.getCoef() - p1.getCoef();
-            } else {
-                return (int) Math.signum(((float)p2.getDifference()/(float)p2.getGamesPlayed())
-                        - ((float)p1.getDifference()/(float)p2.getGamesPlayed()));
-            }
-        }));
+        ratings.sort(new RatingComparator());
         return ratings;
     }
 }

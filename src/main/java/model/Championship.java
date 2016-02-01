@@ -12,6 +12,10 @@ public class Championship {
 
     public Championship() {}
 
+    public int n() {
+        return this.getHistory().size();
+    }
+
     public static void setInstance(Championship championship) {
         Championship.championship = championship;
         if (championship.getForecast().isEmpty() &&

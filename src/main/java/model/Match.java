@@ -34,8 +34,21 @@ public class Match {
     private Team team1;
     private Team team2;
 
+    public int getN() {
+        return n;
+    }
+
+    public void setN(int n) {
+        this.n = n;
+    }
+
+    private int n = -1;
+
     public void setScore(Score score) {
         this.score = score;
+        if (this.getN() == -1){
+            this.setN(Championship.getInstance().n());
+        }
     }
 
     private Score score;

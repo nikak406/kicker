@@ -1,6 +1,5 @@
 package rest;
 
-import engine.Randomizer;
 import model.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -87,6 +86,10 @@ public class Config {
 
     private Match getMatch(Node node) {
         String p1t1, p2t1, p1t2, p2t2, s1, s2;
+
+        Element nElement = ((Element) ((Element) node).getElementsByTagName("n").item(0));
+        int N = Integer.parseInt(nElement.getChildNodes().item(0).getNodeValue());
+
         Element scoreElement = ((Element) ((Element) node).getElementsByTagName("score").item(0));
         if (scoreElement != null) {
             s1 = scoreElement.getElementsByTagName("score1").item(0).getChildNodes().item(0).getNodeValue();
@@ -116,6 +119,7 @@ public class Config {
         p2 = championship.findPlayer(p2t2);
         t2 = new Team(p1, p2);
         Match match = new Match(t1, t2);
+        match.setN(N);
         Score score = null;
         if (!s1.isEmpty()) {
             try {

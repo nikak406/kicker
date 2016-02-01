@@ -3,6 +3,7 @@ package ui;
 import model.*;
 
 import javax.inject.Named;
+import java.util.Comparator;
 import java.util.List;
 
 @Named
@@ -15,7 +16,9 @@ public class Jsf {
     }
 
     public Schedule getHistory() {
-        return Championship.getInstance().getHistory();
+        Schedule list = Championship.getInstance().getHistory();
+        list.sort((o1, o2) -> o2.getN() - o1.getN());
+        return list;
     }
 
     public List<PlayerRating> getRatings() {

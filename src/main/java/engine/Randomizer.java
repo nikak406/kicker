@@ -19,10 +19,10 @@ public class Randomizer {
             }
         }
         return min;*/
-        return createSet();
+        return createRound();
     }
 
-    public Schedule createSet() {
+    public Schedule createRound() {
         Set<Player> players = new HashSet(Championship.getInstance().getPlayers());
         Schedule schedule = new Schedule();
         while (players.size()>=4) {

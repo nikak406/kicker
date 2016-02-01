@@ -45,11 +45,6 @@ public class Config {
         matches.addAll(getMatches(doc, "history"));
         matches.addAll(getMatches(doc, "forecast"));
         championship.setMatches(matches);
-
-        if (matches.isEmpty()){
-            championship.setMatches(new Randomizer().randomize());
-        }
-
         Championship.setInstance(championship);
     }
 

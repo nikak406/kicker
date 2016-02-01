@@ -7,7 +7,7 @@ import java.util.*;
 public class Randomizer {
 
     public Schedule randomize() {
-        int n = Championship.getInstance().getPlayers().size();
+        /*int n = Championship.getInstance().getPlayers().size();
         Schedule schedule;
         int count = 0;
         Schedule min = createSchedule(allPossibleTeams());
@@ -18,7 +18,27 @@ public class Randomizer {
                 min = schedule;
             }
         }
-        return min;
+        return min;*/
+        return createSet();
+    }
+
+    public Schedule createSet() {
+        Set<Player> players = new HashSet(Championship.getInstance().getPlayers());
+        Schedule schedule = new Schedule();
+        while (players.size()>=4) {
+            Player p1 = popRandom(players);
+            Player p2 = popRandom(players);
+            Player p3 = popRandom(players);
+            Player p4 = popRandom(players);
+            schedule.add(new Match(new Team(p1, p2), new Team(p3, p4)));
+        }
+        return schedule;
+    }
+
+    private Player popRandom(Set<Player> players) {
+        Player player = random(players);
+        players.remove(player);
+        return player;
     }
 
     private Schedule createSchedule(Set<Team> teams) {

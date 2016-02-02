@@ -10,7 +10,7 @@ import java.util.HashSet;
 public class Main {
 
     public static Set<Player> createPlayers(int size) {
-        Set<Player> result = new HashSet<>();
+        Set<Player> result = new HashSet<Player>();
         for (int i = 0; i < size; i++) {
             result.add(new Player("player" + (i + 1)));
         }

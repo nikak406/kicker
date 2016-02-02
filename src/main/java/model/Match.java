@@ -60,7 +60,7 @@ public class Match {
 
 
     public Set<Team> getTeams() {
-        Set<Team> set = new HashSet<>();
+        Set<Team> set = new HashSet<Team>();
         set.add(team1);
         set.add(team2);
         return set;

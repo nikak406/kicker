@@ -56,7 +56,11 @@ public class Config {
             is.setCharacterStream(new StringReader(xml));
             doc = db.parse(is);
             doc.getDocumentElement().normalize();
-        } catch (ParserConfigurationException | SAXException | IOException e) {
+        } catch (ParserConfigurationException e){
+            e.printStackTrace();
+        } catch (SAXException e){
+            e.printStackTrace();
+        } catch (IOException e){
             e.printStackTrace();
         }
         return doc;
@@ -75,7 +79,7 @@ public class Config {
 
     private Set<Player> getPlayers(Document doc) {
         NodeList nodes = doc.getElementsByTagName("players");
-        Set<Player> result = new HashSet<>();
+        Set<Player> result = new HashSet<Player>();
         for (int i = 0; i < nodes.getLength(); i++) {
             Node node = nodes.item(i);
             Player player = getPlayer(node);

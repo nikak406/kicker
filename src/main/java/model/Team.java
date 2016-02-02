@@ -34,7 +34,7 @@ public class Team extends ArrayList<Player>{
     }
 
     public boolean canPlay(Team team){
-        List<Player> copy = new ArrayList<>(this);
+        List<Player> copy = new ArrayList<Player>(this);
         copy.retainAll(team);
         return copy.isEmpty();
     }

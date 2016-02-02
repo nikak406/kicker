@@ -70,14 +70,14 @@ public class Championship {
     }
 
     public Set<Player> getPlayers() {
-        return new HashSet<>(players);
+        return new HashSet<Player>(players);
     }
 
     public void setPlayers(Set<Player> players) {
         this.players = players;
     }
 
-    private Set<Player> players = new HashSet<>();
+    private Set<Player> players = new HashSet<Player>();
 
     @XmlTransient
     public void setMatches(Schedule matches) {
@@ -112,7 +112,7 @@ public class Championship {
 
     @XmlTransient
     public List<PlayerRating> getRatings(){
-        List<PlayerRating> ratings = new ArrayList<>();
+        List<PlayerRating> ratings = new ArrayList<PlayerRating>();
         for (Player player : players) {
             ratings.add(new PlayerRating(player, getHistory().playing(player)));
         }

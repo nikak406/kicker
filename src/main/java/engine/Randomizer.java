@@ -11,7 +11,7 @@ public class Randomizer {
     }
 
     public Schedule createRound() {
-        Set<Player> players = new HashSet<>(Championship.getInstance().getPlayers());
+        Set<Player> players = new HashSet<Player>(Championship.getInstance().getPlayers());
         Schedule schedule = new Schedule();
         while (players.size()>=4) {
             Player p1 = popRandom(players);

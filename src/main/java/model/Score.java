@@ -58,10 +58,6 @@ public class Score {
         return sb.toString();
     }
 
-    boolean isWin() {
-        return (score1 - score2 > 0);
-    }
-
     @Override
     public String toString() {
         return " " + score1 + ":" + score2 + " ";

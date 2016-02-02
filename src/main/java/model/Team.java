@@ -23,14 +23,6 @@ public class Team extends ArrayList<Player>{
         return "" + this.get(0) + " " + this.get(1);
     }
 
-    public Player getAnotherPlayer(Player player) {
-        int index = this.indexOf(player);
-        if (index == -1){
-            return null;
-        }
-        return (this.get((index + 1) % 2));
-    }
-
     @Override
     public boolean equals(Object o) {
         return !(o == null || o.getClass() != this.getClass()) && this.containsAll((Team) o);

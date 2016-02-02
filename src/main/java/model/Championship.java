@@ -5,7 +5,6 @@ import engine.Randomizer;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @XmlRootElement
 public class Championship {
@@ -30,7 +29,7 @@ public class Championship {
     public static synchronized Championship getInstance(){
         if (championship == null){
             championship = new Championship();
-            championship.setPlayers(Collections.emptySet());
+            championship.setPlayers(new HashSet<Player>());
             championship.setMatches(new Schedule());
         }
         return championship;
@@ -80,12 +79,6 @@ public class Championship {
 
     private Set<Player> players = new HashSet<>();
 
-
-    public void addPlayer(Player player) {
-        players.add(player);
-    }
-
-
     @XmlTransient
     public void setMatches(Schedule matches) {
         this.matches = matches;
@@ -93,22 +86,25 @@ public class Championship {
 
     private Schedule matches = new Schedule();
 
-    public Schedule getForecast(){
-        return matches.stream().filter(match -> match.getScore() == null).collect(Collectors.toCollection(Schedule::new));
+    public Schedule getForecast() {
+        Schedule forecast = new Schedule();
+        for (Match match : matches) {
+            if (match.getScore() == null) {
+                forecast.add(match);
+            }
+        }
+        return forecast;
     }
 
     public Schedule getHistory(){
-        return matches.stream().filter(match -> match.getScore() != null).collect(Collectors.toCollection(Schedule::new));
+        Schedule history = new Schedule();
+        for (Match match : matches) {
+            if (match.getScore() != null) {
+                history.add(match);
+            }
+        }
+        return history;
     }
-
-    public void setForecast(Schedule matches) {
-        this.matches.addAll(matches);
-    }
-
-    public void setHistory(Schedule matches) {
-        this.matches.addAll(matches);
-    }
-
 
     public void addMatch(Match match) {
         matches.add(match);

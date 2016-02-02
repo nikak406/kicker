@@ -12,19 +12,6 @@ public class Schedule extends ArrayList<Match> {
     public Schedule() {
     }
     
-    public Set<Team> getTeams() {
-        Set<Team> teams = new HashSet<>();
-        for (Match match : this) {
-            teams.addAll(match.getTeams());
-        }
-        return teams;
-    }
-
-    public Set<Team> getTeams(Player player) {
-        Set<Team> allTeams = getTeams();
-        return allTeams.stream().filter(team -> team.contains(player)).collect(Collectors.toCollection(HashSet::new));
-    }
-
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder("Schedule:\n");
@@ -35,8 +22,12 @@ public class Schedule extends ArrayList<Match> {
     }
 
     public Schedule playing(Player player) {
-        return this.stream()
-                .filter(match -> (match.getTeam1().contains(player) || match.getTeam2().contains(player)))
-                .collect(Collectors.toCollection(Schedule::new));
+        Schedule schedule = new Schedule();
+        for (Match match : this) {
+            if (match.getTeam1().contains(player) || match.getTeam2().contains(player)) {
+                schedule.add(match);
+            }
+        }
+        return schedule;
     }
 }

@@ -17,7 +17,13 @@ public class Jsf {
 
     public Schedule getHistory() {
         Schedule list = Championship.getInstance().getHistory();
-        list.sort((o1, o2) -> o2.getN() - o1.getN());
+        Comparator<Match> comparator = new Comparator<Match>() {
+            @Override
+            public int compare(Match o1, Match o2) {
+                return o2.getN() - o1.getN();
+            }
+        };
+        list.sort(comparator);
         return list;
     }
 

@@ -18,13 +18,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-       /* for (int i = 4; i <= 24; i++) {
-            Championship championship = Championship.getInstance();
-            championship.setPlayers(createPlayers(i));
-            Randomizer r = new Randomizer();
-            championship.setMatches(r.randomize());
-            System.out.println(i + ": " + championship.getForecast().size());
-        }*/
         Championship championship = Championship.getInstance();
         championship.setPlayers(createPlayers(16));
         Randomizer r = new Randomizer();

@@ -1,12 +1,11 @@
 package model;
 
 import engine.Randomizer;
+import engine.XmlParser;
+import ofy.OfyHelper;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import java.util.*;
 
-@XmlRootElement
 public class Championship {
 
     public Championship() {}
@@ -31,6 +30,9 @@ public class Championship {
             championship = new Championship();
             championship.setPlayers(new HashSet<Player>());
             championship.setMatches(new Schedule());
+        }
+        if (championship.getPlayers().isEmpty()){
+            championship = new XmlParser().returnChampioship(OfyHelper.get());
         }
         return championship;
     }
@@ -79,7 +81,6 @@ public class Championship {
 
     private Set<Player> players = new HashSet<Player>();
 
-    @XmlTransient
     public void setMatches(Schedule matches) {
         this.matches = matches;
     }
@@ -103,20 +104,45 @@ public class Championship {
                 history.add(match);
             }
         }
+        Comparator<Match> comparator = new Comparator<Match>() {
+            public int compare(Match o1, Match o2) {
+                return o2.getN() - o1.getN();
+            }
+        };
+        Collections.sort(history, comparator);
         return history;
     }
 
     public void addMatch(Match match) {
         matches.add(match);
     }
-
-    @XmlTransient
+    
     public List<PlayerRating> getRatings(){
         List<PlayerRating> ratings = new ArrayList<PlayerRating>();
         for (Player player : players) {
             ratings.add(new PlayerRating(player, getHistory().playing(player)));
         }
-        ratings.sort(new RatingComparator());
+        Collections.sort(ratings, new RatingComparator());
+        for (int i = 0; i < ratings.size(); i++) {
+            ratings.get(i).setPlace(i+1);
+        }
         return ratings;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<championship>\n");
+        for (Player player : players) {
+            sb.append("<players>\n").append(player.toXml()).append("</players>\n");
+        }
+        for (Match match : getForecast()) {
+            sb.append("<forecast>\n").append(match.toXml()).append("</forecast>\n");
+        }
+        for (Match match : getHistory()) {
+            sb.append("<history>\n").append(match.toXml()).append("</history>\n");
+        }
+        sb.append("</championship>");
+        return sb.toString();
     }
 }

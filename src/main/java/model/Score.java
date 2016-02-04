@@ -1,9 +1,7 @@
 package model;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Scanner;
 
-@XmlRootElement
 public class Score {
     public int getScore1() {
         return score1;
@@ -61,5 +59,14 @@ public class Score {
     @Override
     public String toString() {
         return " " + score1 + ":" + score2 + " ";
+    }
+
+    public String toXml() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<score>\n");
+        sb.append("<score1>").append(score1).append("</score1>\n");
+        sb.append("<score2>").append(score2).append("</score2>\n");
+        sb.append("</score>\n");
+        return sb.toString();
     }
 }

@@ -1,6 +1,7 @@
-package rest;
+package engine;
 
 import model.*;
+import ofy.OfyHelper;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -8,7 +9,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import javax.ws.rs.*;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -18,33 +19,23 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-@Path("manage")
-public class Config {
+public class XmlParser {
 
     private Championship championship;
 
-    @GET
-    @Produces({"text/xml"})
-    public Championship getExpenseList() {
-        return Championship.getInstance();
-    }
-
-    @PUT
-    @Consumes("*/xml")
     public void createConfig(String xml) {
         championship = new Championship();
-
         Document doc = createDoc(xml);
         if (doc == null) {
             return;
         }
-
         championship.setPlayers(getPlayers(doc));
         Schedule matches = new Schedule();
         matches.addAll(getMatches(doc, "history"));
         matches.addAll(getMatches(doc, "forecast"));
         championship.setMatches(matches);
         Championship.setInstance(championship);
+        OfyHelper.save(championship.toString());
     }
 
     private Document createDoc(String xml) {
@@ -143,5 +134,22 @@ public class Config {
     private Player getPlayer(Node node) {
         String name = ((Element) node).getElementsByTagName("name").item(0).getChildNodes().item(0).getNodeValue();
         return new Player(name);
+    }
+
+    public Championship returnChampioship(String xml) {
+        championship = new Championship();
+        Document doc = createDoc(xml);
+        if (doc == null) {
+            championship.setPlayers(new HashSet<Player>());
+            championship.setMatches(new Schedule());
+            return championship;
+        }
+        championship.setPlayers(getPlayers(doc));
+        Schedule matches = new Schedule();
+        matches.addAll(getMatches(doc, "history"));
+        matches.addAll(getMatches(doc, "forecast"));
+        championship.setMatches(matches);
+        OfyHelper.save(championship.toString());
+        return championship;
     }
 }

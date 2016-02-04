@@ -4,7 +4,6 @@ import java.util.Comparator;
 
 public class RatingComparator implements Comparator<PlayerRating> {
 
-    @Override
     public int compare(PlayerRating p1, PlayerRating p2) {
         {
             int res = compareScore(p1, p2);

@@ -53,6 +53,36 @@ table
     border-spacing: 0;
     border-collapse: collapse;
     border-top: 1px solid #ddd;
+    font-size: 1.50em;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: solid 5px #c9c9c9;
+    box-shadow: inset 0 0 0 1px #707070;
+    transition: box-shadow 0.3s, border 0.3s;
+    font-size:1em;
+    height: 3em;
+}
+input[type="text"]:focus,
+input[type="text"].focus {
+    border: solid 5px #969696;
+}
+
+select {
+    border: solid 5px #c9c9c9;
+    box-shadow: inset 0 0 0 1px #707070;
+    background: transparent;
+    padding: 5px;
+    font-size: 1em;
+    line-height: 1;
+    height: 3em;
+    -webkit-appearance: none;
+}
+
+select:focus,
+select.focus {
+    border: solid 5px #969696;
 }
 
 th, td
@@ -75,7 +105,7 @@ Layout styles
 
 .container
 {
-    max-width: 63em;
+    max-width: 60em;
     margin: 0 auto;
     background-color: #fff;
 }
@@ -93,6 +123,7 @@ Layout styles
 {
     background:#9e6547;
     padding: 0;
+    font-size: 1.375em;
 }
 
 .content { padding: 1em 1.25em; }
@@ -133,7 +164,6 @@ Nav
     display: block;
     padding: .7em 1.25em;
     color: white;
-    font-weight: bold;
     text-decoration: none;
     border-bottom: 1px solid gray;
 }
@@ -144,13 +174,13 @@ Nav
 .nav a:focus
 {
     color: white;
-    background-color: dimgray;
+    background-color: #9e6547;
 }
 
 .nav a:active
 {
     color: white;
-    background-color: dimgray;
+    background-color: #9e6547;
 }
 
 /* -----------------------
@@ -159,47 +189,27 @@ Single styles
 
 .img-responsive { max-width: 100%; }
 
-.btn
-{
-    font-size: .8125em;
-    color: #fff !important;
-    background-color: grey;
-    display: inline-block;
-    padding: .5em 1em;
-    margin-bottom: 0;
-    font-weight: 400;
-    line-height: 1.2;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: .2em;
-    text-decoration: none;
+.btn {
+    padding: 10px;
+    border: solid 5px #c9c9c9;
+    box-shadow: inset 0 0 0 1px #707070;
+    transition: box-shadow 0.3s, border 0.3s;
+    font-size:1em;
+    color: white;
+    background: #707070;
+    height: 3em;
 }
+.btn:hover, .btn:focus, .btn:active{
+    border: solid 5px #969696;
+    background: #9e6547 ;
+    color: white
+}
+
 
 .aligncenter
 {
     text-align: center;
     vertical-align: middle;
-}
-
-.btn:hover
-{
-    color: #fff !important;
-    background-color: red;
-}
-
-.btn:focus
-{
-    color: #fff !important;
-    background-color: red;
-}
-
-.btn:active
-{
-    color: #fff !important;
-    background-color: red;
 }
 
 .table
@@ -272,9 +282,6 @@ Wide styles
         float: left;
     }
 
-    .textleft {
-        text-align: left;
-    }
     .alignright {
         float: right;
     }

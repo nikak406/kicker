@@ -1,10 +1,8 @@
 package model;
 
-import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
-@XmlRootElement
 public class Match {
 
     public Match() {
@@ -51,7 +49,6 @@ public class Match {
     }
 
     @Override
-
     public String toString() {
         String scoreText = (score == null) ? "" : score.toString();
         return "" + team1 + " | " + scoreText + " | " + team2;
@@ -70,5 +67,18 @@ public class Match {
         int diff = score.score1 - score.score2;
         return (diff > 0 && team1.contains(player)) ||
                 (diff < 0) && team2.contains(player);
+    }
+
+    public String toXml() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<n>").append(n).append("</n>\n");
+        sb.append("<team1>\n").append(team1.get(0).toXml()).append("</team1>\n");
+        sb.append("<team1>\n").append(team1.get(1).toXml()).append("</team1>\n");
+        sb.append("<team2>\n").append(team2.get(0).toXml()).append("</team2>\n");
+        sb.append("<team2>\n").append(team2.get(1).toXml()).append("</team2>\n");
+        if (score != null) {
+            sb.append(score.toXml());
+        }
+        return sb.toString();
     }
 }

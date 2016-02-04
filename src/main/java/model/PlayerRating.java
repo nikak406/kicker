@@ -37,6 +37,7 @@ public class PlayerRating extends Player {
     private int loseScore = 0;
     private int difference = 0;
     private int score = 0;
+    private int place = 0;
 
     public int getCoef() {
         return coef;
@@ -73,5 +74,13 @@ public class PlayerRating extends Player {
             }
         }
         difference = (winScore - loseScore);
+    }
+
+    public int getPlace() {
+        return place;
+    }
+
+    public void setPlace(int place) {
+        this.place = place;
     }
 }

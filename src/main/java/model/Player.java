@@ -1,8 +1,5 @@
 package model;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class Player {
 
     public Player() {
@@ -25,6 +22,10 @@ public class Player {
     @Override
     public String toString() {
         return name;
+    }
+
+    public String toXml(){
+        return "<name>" + name + "</name>\n";
     }
 
     @Override

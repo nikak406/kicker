@@ -1,9 +1,7 @@
 package model;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 
-@XmlRootElement
 public class Schedule extends ArrayList<Match> {
 
     public Schedule() {

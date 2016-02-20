@@ -26,7 +26,7 @@
                       <th> П </th>
                       <th> Р </th>
                       <th> % </th>
-                      <th> Очки </th>
+                      <th> О </th>
                   </tr>
                   <c:forEach items="${ratings}" var="rating">
                       <tr>

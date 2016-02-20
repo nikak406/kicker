@@ -11,7 +11,7 @@
 <body>
 <div class="container">
     <div class="header">
-        <h1 class="header-heading"><img src="../../ball.jpg" alt="" style="margin-bottom: -0.2em;"/>kickr</h1>
+        <h1 class="header-heading"><img src="../../ball.png" alt="" style="margin-bottom: -0.2em;"/>kickr</h1>
     </div>
     <div class="nav-bar">
             <ul class="nav">

@@ -11,6 +11,9 @@ public class RatingComparator implements Comparator<PlayerRating> {
                 res = compareGamesPlayed(p1, p2);
                 if (res == 0) {
                     res = compareDifference(p1, p2);
+                    if (res == 0){
+                        res = compareHits(p1, p2);
+                    }
                 }
             }
             return res;
@@ -27,5 +30,9 @@ public class RatingComparator implements Comparator<PlayerRating> {
 
     private int compareDifference(PlayerRating p1, PlayerRating p2){
         return p2.getDifference() - p1.getDifference();
+    }
+
+    private int compareHits(PlayerRating p1, PlayerRating p2){
+        return p2.getWinScore() - p1.getWinScore();
     }
 }

@@ -19,10 +19,12 @@
                   <tr>
                       <th> Имя </th>
                       <th> № </th>
-                      <th> Игр </th>
-                      <th> Голы </th>
-                      <th> Проп. </th>
-                      <th> Разн. </th>
+                      <th> Поб </th>
+                      <th> Пор </th>
+                      <th> И </th>
+                      <th> Г </th>
+                      <th> П </th>
+                      <th> Р </th>
                       <th> % </th>
                       <th> Очки </th>
                   </tr>
@@ -30,6 +32,8 @@
                       <tr>
                           <td> <c:out value="${rating.name}"/></td>
                           <td> <c:out value="${rating.place}"/></td>
+                          <td> <c:out value="${rating.wins}"/></td>
+                          <td> <c:out value="${rating.loses}"/></td>
                           <td> <c:out value="${rating.gamesPlayed}"/></td>
                           <td> <c:out value="${rating.winScore}"/></td>
                           <td> <c:out value="${rating.loseScore}"/></td>

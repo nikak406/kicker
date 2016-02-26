@@ -25,8 +25,8 @@
                       <th> Г </th>
                       <th> П </th>
                       <th> Р </th>
-                      <th> % </th>
                       <th> О </th>
+                      <th> % </th>
                   </tr>
                   <c:forEach items="${ratings}" var="rating">
                       <tr>
@@ -34,12 +34,12 @@
                           <td> <c:out value="${rating.place}"/></td>
                           <td> <c:out value="${rating.wins}"/></td>
                           <td> <c:out value="${rating.loses}"/></td>
-                          <td> <c:out value="${rating.gamesPlayed}"/></td>
+                          <td><b> <c:out value="${rating.gamesPlayed}"/></b></td>
                           <td> <c:out value="${rating.winScore}"/></td>
                           <td> <c:out value="${rating.loseScore}"/></td>
                           <td> <c:out value="${rating.difference}"/></td>
-                          <td> <c:out value="${rating.coef}"/></td>
-                          <td><b><c:out value="${rating.score}"/></b></td>
+                          <td><c:out value="${rating.score}"/></td>
+                          <td><b> <c:out value="${rating.coef}"/></b></td>
                       </tr>
                   </c:forEach>
               </table>

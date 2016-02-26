@@ -121,7 +121,7 @@ Layout styles
 
 .nav-bar
 {
-    background:#9e6547;
+    background: rgb(89, 110, 19);
     padding: 0;
     font-size: 1.375em;
 }
@@ -131,7 +131,7 @@ Layout styles
 .footer
 {
     color: white;
-    background: #9e6547;
+    background: rgb(89, 110, 19);
     padding: 1em 1.25em;
 }
 
@@ -174,13 +174,13 @@ Nav
 .nav a:focus
 {
     color: white;
-    background-color: #9e6547;
+    background-color:rgb(89, 110, 19);
 }
 
 .nav a:active
 {
     color: white;
-    background-color: #9e6547;
+    background-color: rgb(89, 110, 19);
 }
 
 /* -----------------------
@@ -201,7 +201,7 @@ Single styles
 }
 .btn:hover, .btn:focus, .btn:active{
     border: solid 5px #969696;
-    background: #9e6547 ;
+    background: rgb(89, 110, 19);
     color: white
 }
 

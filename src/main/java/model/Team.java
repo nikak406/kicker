@@ -35,4 +35,15 @@ public class Team extends ArrayList<Player>{
         copy.retainAll(team);
         return copy.isEmpty();
     }
+
+    public Player getAnotherPlayer(Player player) {
+        int i = this.indexOf(player);
+        switch (i){
+            case 0:
+                return this.get(1);
+            case 1:
+                return this.get(0);
+        }
+        return null;
+    }
 }

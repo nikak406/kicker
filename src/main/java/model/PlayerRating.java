@@ -83,4 +83,22 @@ public class PlayerRating extends Player {
     public void setPlace(int place) {
         this.place = place;
     }
+
+    public int diffCoef(){
+        if (this.getGamesPlayed() == 0) return 0;
+        double difference = this.getDifference();
+        double gamesPlayed = this.getGamesPlayed();
+        double coef = difference / gamesPlayed;
+        coef *= 100;
+        return (int) coef;
+    }
+
+    public int hitCoef(){
+        if (this.getGamesPlayed() == 0) return 0;
+        double hits = this.getWinScore();
+        double gamesPlayed = this.getGamesPlayed();
+        double coef = hits / gamesPlayed;
+        coef *= 100;
+        return (int) coef;
+    }
 }

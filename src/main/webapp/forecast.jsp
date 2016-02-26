@@ -7,7 +7,7 @@
 <%@ page import="model.Championship" %>
 
 <%
-    Schedule forecast = Championship.getInstance().getForecast();
+    Schedule forecast = Championship.getInstance().getForecast().head();
     request.setAttribute("forecast", forecast);
 %>
 

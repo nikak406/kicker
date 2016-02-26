@@ -14,7 +14,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>random</servlet-name>
-        <url-pattern>/random</url-pattern>
+        <url-pattern>/randomize</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>state</servlet-name>

@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-    Schedule forecast = Championship.getInstance().getForecast();
+    Schedule forecast = Championship.getInstance().getForecast().head();
     request.setAttribute("forecast", forecast);
 %>
 

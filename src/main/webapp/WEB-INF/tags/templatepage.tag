@@ -19,6 +19,7 @@
                 <li><a href="/forecast.jsp">Расписание</a></li>
                 <li><a href="/history.jsp">История</a></li>
                 <li><a href="/result.jsp">Добавить счет</a></li>
+                <li><a href="https://kicker-1210.appspot.com/">Старый Чемпионат</a></li>
                 <li class="alignright">
                     <a href="/rules.jsp">
                         <img src="../../question.png" alt="Правила" style="width:24px;height: 24px; border: 4px;"/>

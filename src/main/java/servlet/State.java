@@ -56,7 +56,6 @@ public class State extends HttpServlet {
                 OfyHelper.save(Championship.getInstance().toString());
             }
         }
-
         resp.sendRedirect("/history.jsp");
     }
 }

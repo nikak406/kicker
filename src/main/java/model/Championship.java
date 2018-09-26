@@ -26,11 +26,24 @@ public class Championship {
     private static Championship championship;
 
 
+    private static Set<Player> initPlayers(){
+        Set<Player> players = new HashSet<Player>();
+        players.add(new Player("Stark"));
+        players.add(new Player("Lannister"));
+        players.add(new Player("Baratheon"));
+        players.add(new Player("Targaryen"));
+        players.add(new Player("Snow"));
+        players.add(new Player("Baylish"));
+        players.add(new Player("Bolton"));
+        players.add(new Player("Grayjoy"));
+        return players;
+    }
+
     public static synchronized Championship getInstance(){
         if (championship == null){
             championship = new Championship();
-            championship.setPlayers(new HashSet<Player>());
-            championship.setMatches(new Schedule());
+            championship.setPlayers(initPlayers());
+            championship.setMatches(new Randomizer().randomize());
         }
         return championship;
     }
